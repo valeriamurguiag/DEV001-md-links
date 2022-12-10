@@ -635,7 +635,7 @@ Es importante que sepas qué es un **callback** pues las
 promesas los utilizarán.
 
 
-## 9. Para considerar Project Feedback
+## 10. Para considerar Project Feedback
 
 ### `README.md`
 
