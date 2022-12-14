@@ -10,8 +10,9 @@
 * [6. Entregables](#6-entregables)
 * [7. Hacker edition](#7-hacker-edition)
 * [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
-* [9. Checklist](#9-checklist)
-* [10. Achicando el problema](#10-achicando-el-problema)
+* [9. Achicando el problema](#9-achicando-el-problema)
+* [10. Para considerar Project Feedback](#10-para-considerar-project-feedback)
+
 
 ***
 
@@ -508,39 +509,7 @@ si tienes dudas existenciales con respecto a estas decisiones. No existe una
 * [Path](https://nodejs.org/api/path.html)
 * [Linea de comando CLI](https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e)
 
-## 9. Checklist
-
-### General
-
-* [ ] Puede instalarse via `npm install --global <github-user>/md-links`
-
-### `README.md`
-
-* [ ] Un board con el backlog para la implementación de la librería.
-* [ ] Documentación técnica de la librería.
-* [ ] Guía de uso e instalación de la librería
-
-### API `mdLinks(path, opts)`
-
-* [ ] El módulo exporta una función con la interfaz (API) esperada.
-* [ ] Implementa soporte para archivo individual
-* [ ] Implementa soporte para directorios
-* [ ] Implementa `options.validate`
-
-### CLI
-
-* [ ] Expone ejecutable `md-links` en el path (configurado en `package.json`)
-* [ ] Se ejecuta sin errores / output esperado
-* [ ] Implementa `--validate`
-* [ ] Implementa `--stats`
-
-### Pruebas / tests
-
-* [ ] Pruebas unitarias cubren un mínimo del 70% de statements, functions,
-  lines, y branches.
-* [ ] Pasa tests (y linters) (`npm test`).
-
-## 10. Achicando el problema
+## 9. Achicando el problema
 
 Un "superpoder" que esperamos puedas desarrollar durante el bootcamp
 es el de definir "mini-proyectos" que te acerquen paso a paso a
@@ -573,7 +542,7 @@ Mediante **issues** y **milestones** podrás organizar y planificar
 tareas y objetivos concretos.
 
 Tomando en consideración los **entregables** del proyecto, el
-[9. Checklist](#9-checklist) y los **pasos** que definiste en tu
+[10. Para considerar Project Feedback](#10-para-considerar-project-feedback)                                                                                            y los **pasos** que definiste en tu
 `diagrama de flujo`, crea tu planificación en GitHub Projects.
 
 ### Antes de codear
@@ -664,3 +633,36 @@ cuenta utilizando **new Promise()**
 
 Es importante que sepas qué es un **callback** pues las
 promesas los utilizarán.
+
+
+## 10. Para considerar Project Feedback
+
+### `README.md`
+
+* [ ] Documentación técnica de la librería.
+* [ ] Guía de uso e instalación de la librería
+
+### API `mdLinks(path, opts)`
+
+* [ ] El módulo exporta una función con la interfaz (API) esperada
+* [ ] Implementa soporte para archivo individual
+* [ ] Implementa soporte para directorios
+* [ ] Implementa `options.validate`
+
+### CLI
+
+* [ ] Expone ejecutable `md-links` en el path (configurado en `package.json`)
+* [ ] Se ejecuta sin errores / output esperado
+* [ ] Implementa `--validate`
+* [ ] Implementa `--stats`
+
+### Pruebas / tests
+
+* [ ] Pruebas unitarias cubren un mínimo del 70% de statements, functions,
+  lines, y branches.
+* [ ] Pasa tests (y linters) (`npm test`).
+
+### General
+
+* [ ] Un board en github projects con issues para la implementación de la librería
+* [ ] Puede instalarse via `npm install --global <github-user>/md-links`
