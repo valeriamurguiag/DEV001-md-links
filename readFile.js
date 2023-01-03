@@ -1,6 +1,8 @@
+// Crear una función que imprima el contenido del archivo dado
+
 const { readFile } = require('fs');
 
-const getText = (pathFile) => {
+const getFile = (pathFile) => {
     return new Promise(function (resolve, reject){
         readFile(pathFile, 'utf-8', (err, data) => {
             if (err){
@@ -8,13 +10,13 @@ const getText = (pathFile) => {
             } else {
                 resolve(data);
             }
-        })
-    })
+        });
+    });
 }
 
-getText('./mdFiles/exampleFile.md')
+getFile('./mdFiles/exampleFile.md')
     .then((result) => console.log(result))
-    .catch(error => console.log(error))
+    .catch(error => console.log(error));
 
 
 
