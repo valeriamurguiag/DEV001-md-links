@@ -1,5 +1,4 @@
 // Crear una función que imprima el contenido del archivo dado
-
 const { readFile } = require('fs');
 
 const getFile = (pathFile) => {
@@ -18,6 +17,9 @@ getFile('./mdFiles/exampleFile.md')
     .then((result) => console.log(result))
     .catch(error => console.log(error));
 
+module.exports = {
+    getFile
+}
 
 
 

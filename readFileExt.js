@@ -1,8 +1,13 @@
 // Crear función que averigüe e imprima la extensión de un archivo
+const path = require('path');
 
 const getFileExt = (pathFile) => {
-    return pathFile.split('.').pop()
+    const ext = path.extname(pathFile);
+    console.log(ext);
 }
 
-let ext = getFileExt('./mdFiles/exampleFile.md')
-    console.log(ext)
+getFileExt('./mdFiles/exampleFile.md');
+
+module.exports = {
+    getFileExt
+}
