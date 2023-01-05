@@ -12,4 +12,4 @@ const readDir = () => {
   })
 }
 
-readDir();
+readDir('./mdFiles/exampleFile.md');

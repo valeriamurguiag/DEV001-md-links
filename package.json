@@ -22,12 +22,16 @@
     "url": "git+https://github.com/valeriamurguiag/DEV001-md-links.git"
   },
   "keywords": [
-    "markdown", "links"
+    "markdown",
+    "links"
   ],
   "author": "Valeria Murguia Garcia",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/valeriamurguiag/DEV001-md-links/issues"
   },
-  "homepage": "https://github.com/valeriamurguiag/DEV001-md-links#readme"
+  "homepage": "https://github.com/valeriamurguiag/DEV001-md-links#readme",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
 }
