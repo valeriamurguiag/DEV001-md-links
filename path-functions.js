@@ -8,7 +8,9 @@ const existsPath = (inputPath) => {
 }
 
 // Check if inputPath is relative or absolute
-const checkPath = (inputPath) => console.log(path.isAbsolute(inputPath))
+const checkPath = (inputPath) => {
+    return (path.isAbsolute(inputPath));
+}
 
 // Turn inputPath into absolute path
 const turnAbsolute = (inputPath) => console.log(path.resolve(inputPath));
@@ -56,7 +58,11 @@ const getPathStat = (inputPath) => fs.stat(inputPath);
 
 module.exports = {
     existsPath,
-    getFile
+    checkPath,
+    turnAbsolute,
+    isFileMarkdown,
+    getFile,
+    readDir
 }
 
 
