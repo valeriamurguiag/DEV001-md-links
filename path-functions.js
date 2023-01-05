@@ -3,7 +3,9 @@ const fs = require('fs');
 
 
 // Check if path exists
-const existsPath = (inputPath) => console.log(fs.existsSync(inputPath));
+const existsPath = (inputPath) => { 
+    return (fs.existsSync(inputPath)); 
+}
 
 // Check if inputPath is relative or absolute
 const checkPath = (inputPath) => console.log(path.isAbsolute(inputPath))
@@ -38,18 +40,23 @@ const getPathStat = (inputPath) => fs.stat(inputPath);
 
 
 // Calling fuctions to check outputs
-existsPath('./mdFiles/exampleFile.md')
+// existsPath('./mdFiles/exampleFile.md')
 
-checkPath('./mdFiles/exampleFile.md')
+// checkPath('./mdFiles/exampleFile.md')
 
-turnAbsolute('./mdFiles/exampleFile.md')
+// turnAbsolute('./mdFiles/exampleFile.md')
 
-isFileMarkdown('./mdFiles/exampleFile.md')
+// isFileMarkdown('./mdFiles/exampleFile.md')
 
 // getFile('./mdFiles/exampleFile.md')
 //     .then((result) => console.log(result))
 //     .catch(error => console.log(error));
 
-readDir('./mdFiles');
+// readDir('./mdFiles');
+
+module.exports = {
+    existsPath,
+    getFile
+}
 
 
