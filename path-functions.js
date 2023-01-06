@@ -13,10 +13,14 @@ const checkPath = (inputPath) => {
 }
 
 // Turn inputPath into absolute path
-const turnAbsolute = (inputPath) => console.log(path.resolve(inputPath));
+const turnAbsolute = (inputPath) => {
+    return (path.resolve(inputPath));
+}
 
 // Check inputPath extension
-const isFileMarkdown = (inputPath) => console.log(path.extname(inputPath))
+const isFileMarkdown = (inputPath) => {
+    return (path.extname(inputPath) == '.md');
+}
 
 // Read file
 const getFile = (pathFile) => {
