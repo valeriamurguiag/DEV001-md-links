@@ -61,6 +61,35 @@ describe('isFileMarkdown', () => {
   });
 });
 
+// Test for isDirectory function
+describe('isDirectory', () => {
+
+  const directoryPath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\mdFiles';
+
+  it('should be a function', () => {
+    expect(typeof pathFunctions.isDirectory).toBe('function');
+  });
+
+  it('should return true for directory path', () => {
+    expect(pathFunctions.isDirectory(directoryPath)).toBe(true);
+  });
+});
+
+
+// Test for readDir function
+describe('readDir', () => {
+
+  const directoryPath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\mdFiles';
+  const directoryTrue =  [ 'example.js', 'exampleFile.md', 'exampleFile2.md' ];
+
+  it('should be a function', () => {
+    expect(typeof pathFunctions.readDir).toBe('function');
+  });
+
+  it('should return files in the directory', () => {
+    expect(pathFunctions.readDir(directoryPath)).toEqual(directoryTrue);
+  });
+});
 
 // Test for getFile function
 describe('getFile', () => {
@@ -82,17 +111,5 @@ describe('getFile', () => {
   //     }
   //   }
   //   fetchData(getFile);
-  // });
-});
-
-// Test for readDir function
-describe('readDir', () => {
-
-  it('should be a function', () => {
-    expect(typeof pathFunctions.readDir).toBe('function');
-  });
-
-  // it('should return files in the directory', () => {
-  //   expect(pathFunctions.readDir('C:/Users/balry/OneDrive/Documentos/Laboratoria/Proyecto 4 - MD Links/DEV001-md-links/mdFiles/')).toBe('[ \'example.js\', \'exampleFile.md\', \'exampleFile2.md\' ]');
   // });
 });
