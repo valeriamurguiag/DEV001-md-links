@@ -4,12 +4,14 @@ const pathFunctions = require('../path-functions')
 // Test for existsPath function
 describe('existsPath', () => {
 
+  const pathTrue = './mdFiles/exampleFile.md';
+
   it('should be a function', () => {
     expect(typeof pathFunctions.existsPath).toBe('function');
   });
 
   it('should return true if path exists', () => {
-    expect(pathFunctions.existsPath('./mdFiles/exampleFile.md')).toBe(true);
+    expect(pathFunctions.existsPath(pathTrue)).toBe(true);
   });
 });
 
@@ -17,12 +19,14 @@ describe('existsPath', () => {
 // Test for checkPath function
 describe('checkPath', () => {
 
+  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\mdFiles\\exampleFile.md';
+
   it('should be a function', () => {
     expect(typeof pathFunctions.checkPath).toBe('function');
   });
 
   it('should return true if path is absolute', () => {
-    expect(pathFunctions.checkPath('C:/Users/balry/OneDrive/Documentos/Laboratoria/Proyecto 4 - MD Links/DEV001-md-links/mdFiles/exampleFile.md')).toBe(true);
+    expect(pathFunctions.checkPath(absolutePath)).toBe(true);
   });
 });
 
@@ -30,26 +34,31 @@ describe('checkPath', () => {
 // Test for turnAbsolute function
 describe('turnAbsolute', () => {
 
+  const pathTrue = './mdFiles/exampleFile.md';
+  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\mdFiles\\exampleFile.md';
+
   it('should be a function', () => {
     expect(typeof pathFunctions.turnAbsolute).toBe('function');
   });
 
-  // it('should return absolute path', () => {
-  //   expect(pathFunctions.turnAbsolute('/mdFiles/exampleFile.md')).toBe('C:/Users/balry/OneDrive/Documentos/Laboratoria/Proyecto 4 - MD Links/DEV001-md-links/mdFiles/exampleFile.md');
-  // });
+  it('should return an absolute path', () => {
+    expect(pathFunctions.turnAbsolute(pathTrue)).toBe(absolutePath);
+  });
 });
 
 
 // Test for isFileMarkdown function
 describe('isFileMarkdown', () => {
 
+  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\mdFiles\\exampleFile.md';
+
   it('should be a function', () => {
     expect(typeof pathFunctions.isFileMarkdown).toBe('function');
   });
 
-  // it('should return .md extension', () => {
-  //   expect(pathFunctions.isFileMarkdown('C:/Users/balry/OneDrive/Documentos/Laboratoria/Proyecto 4 - MD Links/DEV001-md-links/mdFiles/exampleFile.md')).toBe('.md');
-  // });
+  it('should return true for .md extension', () => {
+    expect(pathFunctions.isFileMarkdown(absolutePath)).toBe(true);
+  });
 });
 
 
