@@ -105,3 +105,18 @@ describe('getFile', () => {
     expect(pathFunctions.getFile(absolutePath)).toBe(absolutePathContent);
   });
 });
+
+// Test for getMdFiles
+describe('getMdFiles', () => {
+
+  const directoryPath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\mdFiles';
+  const mdFilesArr = [ 'exampleFile.md', 'exampleFile2.md' ];
+
+  it('should be a function', () => {
+    expect(typeof pathFunctions.getMdFiles).toBe('function');
+  });
+
+  // it('should return an array containing found md files', () => {
+  //   expect(pathFunctions.getFile(directoryPath)).toEqual(mdFilesArr);
+  // });
+});
