@@ -22,43 +22,25 @@ const isFileMarkdown = (inputPath) => {
     return (path.extname(inputPath) == '.md');
 }
 
-// Read file
-const getFile = (pathFile) => {
-    return new Promise(function (resolve, reject){
-        fs.readFile(pathFile, 'utf-8', (err, data) => {
-            if (err){
-                reject(err);
-            } else {
-                resolve(data);
-            }
-        });
-    });
+// Check if inputPath is a directory
+const isDirectory = (inputPath) => {
+    return (fs.statSync(inputPath).isDirectory());
 }
 
 // Show directory files
-const readDir = (inputPath) => console.log(fs.readdirSync(inputPath));
+const readDir = (inputPath) => {
+    return (fs.readdirSync(inputPath));
+}
 
-// Getting inputPath information (to eventually know if its a file or directory)
-const getPathStat = (inputPath) => fs.stat(inputPath);
-
-// 
-
-
-
-// Calling fuctions to check outputs
-// existsPath('./mdFiles/exampleFile.md')
-
-// checkPath('./mdFiles/exampleFile.md')
-
-// turnAbsolute('./mdFiles/exampleFile.md')
-
-// isFileMarkdown('./mdFiles/exampleFile.md')
+// Read file
+const getFile = (pathFile) => {
+    return (fs.readFileSync(pathFile,{ encoding: "utf-8"}));
+}
 
 // getFile('./mdFiles/exampleFile.md')
 //     .then((result) => console.log(result))
 //     .catch(error => console.log(error));
 
-// readDir('./mdFiles');
 
 module.exports = {
     existsPath,
@@ -66,6 +48,7 @@ module.exports = {
     turnAbsolute,
     isFileMarkdown,
     getFile,
+    isDirectory,
     readDir
 }
 
