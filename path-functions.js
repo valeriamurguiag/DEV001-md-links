@@ -22,7 +22,6 @@ const isFileMarkdown = (inputPath) => {
     return (path.extname(inputPath) == '.md');
 }
 
-
 // Check if inputPath is a directory
 const isDirectory = (inputPath) => {
     return (fs.statSync(inputPath).isDirectory());
@@ -33,18 +32,9 @@ const readDir = (inputPath) => {
     return (fs.readdirSync(inputPath));
 }
 
-
 // Read file
 const getFile = (pathFile) => {
-    return new Promise(function (resolve, reject){
-        fs.readFile(pathFile, 'utf-8', (err, data) => {
-            if (err){
-                reject(err);
-            } else {
-                resolve(data);
-            }
-        });
-    });
+    return (fs.readFileSync(pathFile,{ encoding: "utf-8"}));
 }
 
 // getFile('./mdFiles/exampleFile.md')

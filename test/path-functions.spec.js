@@ -94,22 +94,14 @@ describe('readDir', () => {
 // Test for getFile function
 describe('getFile', () => {
 
+  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\mdFiles\\exampleFile.md';
+  const absolutePathContent = '# Social Network [![imagen-final.png](https://i.postimg.cc/2jG7RqGQ/imagen-final.png)](https://postimg.cc/py9FKLgr)' 
+
   it('should be a function', () => {
     expect(typeof pathFunctions.getFile).toBe('function');
   });
 
-  // test('should read file', getFile => {
-  //   function getFile(err, data) {
-  //     if (err) {
-  //         done(err);
-  //         return;
-  //     } try {
-  //         expect(data).toBe('[![imagen-final.png](https://i.postimg.cc/2jG7RqGQ/imagen-final.png)](https://postimg.cc/py9FKLgr)');
-  //         done();
-  //     } catch {
-  //         done(err);
-  //     }
-  //   }
-  //   fetchData(getFile);
-  // });
+  it('should return files content', () => {
+    expect(pathFunctions.getFile(absolutePath)).toBe(absolutePathContent);
+  });
 });
