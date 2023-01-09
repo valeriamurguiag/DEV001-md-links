@@ -110,13 +110,24 @@ describe('getFile', () => {
 describe('getMdFiles', () => {
 
   const directoryPath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\mdFiles';
-  const mdFilesArr = [ 'exampleFile.md', 'exampleFile2.md' ];
+  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\mdFiles\\exampleFile.md';
+  const mdFilesArr = [
+    'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\mdFiles\\exampleFile.md',
+    'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\mdFiles\\exampleFile2.md'
+  ]
+  const mdFilesArr2 = [
+    'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\mdFiles\\exampleFile.md'
+  ]
 
   it('should be a function', () => {
     expect(typeof pathFunctions.getMdFiles).toBe('function');
   });
 
-  // it('should return an array containing found md files', () => {
-  //   expect(pathFunctions.getFile(directoryPath)).toEqual(mdFilesArr);
-  // });
+  it('should return an array containing found md file', () => {
+    expect(pathFunctions.getMdFiles(absolutePath)).toEqual(mdFilesArr2);
+  });
+
+  it('should return an array containing found md files', () => {
+    expect(pathFunctions.getMdFiles(directoryPath)).toEqual(mdFilesArr);
+  });
 });

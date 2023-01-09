@@ -40,23 +40,27 @@ const getFile = (inputPath) => {
 // Getting .md files within directory
 const getMdFiles = (inputPath) => {
     let mdFilesArr = [];
+    // Check if inputPath is a file 
+    if (isDirectory(inputPath) == false && isFileMarkdown(inputPath)){
+        // Turn path into absolute
+        let absolutePath = turnAbsolute(inputPath);
+        // Add path to the mdFilesArr
+        mdFilesArr.push(absolutePath);
+    }
     // Check if inputPath is a directory
     if (isDirectory(inputPath)){
         // If so, read directory
         readDir(inputPath).forEach((file) => {
+            if (isFileMarkdown(file)){
             // Join paths for each file
             let joinedPaths = path.join(inputPath, file);
             // Turn paths into absolute 
             let absolutePaths = turnAbsolute(joinedPaths);
             // Add paths to the mdFilesArr
             mdFilesArr.push(absolutePaths);
+            }
         });
-    } else if (isFileMarkdown(inputPath)){
-        // Turn path into absolute
-        let absolutePath = turnAbsolute(inputPath);
-        // Add path to the mdFilesArr
-        mdFilesArr.push(absolutePath);
-    }
+    } 
     return mdFilesArr;
 }
 
