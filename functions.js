@@ -37,7 +37,7 @@ const getFile = (inputPath) => {
     return (fs.readFileSync(inputPath,{ encoding: "utf-8"}));
 }
 
-// Getting .md files within directory
+// Getting .md files
 const getMdFiles = (inputPath) => {
     let mdFilesArr = [];
     // Check if inputPath is a file 
@@ -46,19 +46,15 @@ const getMdFiles = (inputPath) => {
         let absolutePath = turnAbsolute(inputPath);
         // Add path to the mdFilesArr
         mdFilesArr.push(absolutePath);
-    }
-    // Check if inputPath is a directory
-    if (isDirectory(inputPath)){
+    } else if (isDirectory(inputPath)){
         // If so, read directory
         readDir(inputPath).forEach((file) => {
-            if (isFileMarkdown(file)){
             // Join paths for each file
             let joinedPaths = path.join(inputPath, file);
             // Turn paths into absolute 
             let absolutePaths = turnAbsolute(joinedPaths);
             // Add paths to the mdFilesArr
-            mdFilesArr.push(absolutePaths);
-            }
+            mdFilesArr = [...mdFilesArr, ...getMdFiles(absolutePaths)]
         });
     } 
     return mdFilesArr;
