@@ -69,18 +69,38 @@ const getLinks = (inputPath) => {
     getMdFiles(inputPath).forEach((file) => {
         // The '/' characters define the beginning and the end of the regex.
         // The ^ character state that the expression to match must begin at the start of the input (but is altered by the 'm' modifier, see below).
-        // The 'gm' at at the end are modifiers. The 'g' modifier is used to perform a global match (find all matches rather than stopping after the first match). 
+        // The 'gm' at the end are modifiers. The 'g' modifier is used to perform a global match (find all matches rather than stopping after the first match). 
         // The 'm' modifier is used to perform multiline matching. It takes the beginning and end characters (^ and $) as working when taken over multiple lines. It matches the beginning or end of each line.
         const urlLinks = /\[([^\[]+)\](\(.*\))/gm;
         // Get [linkReferenceText] and (links) from links within every file
-        let linksReferenceTextArr = getFile(file).match(urlLinks); 
-        // Turn .md file into HTML text
-        if (arrayLinksWithText != null ) {
+        let linksTextArr = getFile(file).match(urlLinks); 
+        
+        if (linksTextArr != null ) {
+            // Turn .md file into HTML text
             let result = md().render(getFile(file));
+            // Recreate DOM with JSDOm
+            let dom = new JSDOM(result);
+            // Render file content and select all <a> tags.
+            linksTextArr = dom.window.document.querySelectorAll('a');
+            
+            linksTextArr.forEach((linksText) => {
+                // Return URL link only
+                const links = linksText.href
+                // Return text only from 0th character and move up to 100th
+                const text = linksText.textContent.substring(0, 100);
+                // Push href, text and file to linksArr
+                linksArr.push({
+                    href: links,
+                    text: text,
+                    file: file,
+                });
+            });
         }
-    })
-
+    });
+    return linksArr;
 }
+
+console.log(getLinks('C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles'))
 
 module.exports = {
     existsPath,
