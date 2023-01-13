@@ -76,6 +76,7 @@ describe('isFileMarkdown', () => {
   });
 });
 
+
 // Test for isDirectory function
 describe('isDirectory', () => {
 
@@ -115,7 +116,7 @@ describe('readDir', () => {
 describe('getFile', () => {
 
   const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md';
-  const absolutePathContent = '# Social Network [![imagen-final.png](https://i.postimg.cc/2jG7RqGQ/imagen-final.png)](https://postimg.cc/py9FKLgr)' 
+  const absolutePathContent = '[Markdown](https://es.wikipedia.org/wiki/Markdown), [Nodejs](https://nodejs.org/en/)' 
 
   it('should be a function', () => {
     expect(typeof pathFunctions.getFile).toBe('function');
@@ -125,6 +126,7 @@ describe('getFile', () => {
     expect(pathFunctions.getFile(absolutePath)).toBe(absolutePathContent);
   });
 });
+
 
 // Test for getMdFiles
 describe('getMdFiles', () => {
@@ -150,5 +152,37 @@ describe('getMdFiles', () => {
 
   it('should return an array containing all found md files', () => {
     expect(pathFunctions.getMdFiles(directoryPath)).toEqual(mdFilesArr);
+  });
+});
+
+
+// Test for getLinks
+describe('getLinks', () => {
+
+  const directoryPath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles';  
+  const linksArr = [
+    {
+      href: 'https://es.wikipedia.org/wiki/Markdown',
+      text: 'Markdown',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
+    },
+    {
+      href: 'https://nodejs.org/en/',
+      text: 'Nodejs',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
+    },
+    {
+      href: 'https://postimg.cc/py9FKLgr',
+      text: 'Imagen final de proyecto',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile2.md'
+    }
+  ];
+
+  it('should be a function', () => {
+    expect(typeof pathFunctions.getLinks).toBe('function');
+  }); 
+
+  it('should return an array containing objects with links information', () => {
+    expect(pathFunctions.getLinks(directoryPath)).toEqual(linksArr);
   });
 });

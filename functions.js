@@ -100,8 +100,6 @@ const getLinks = (inputPath) => {
     return linksArr;
 }
 
-console.log(getLinks('C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles'))
-
 module.exports = {
     existsPath,
     checkPath,
@@ -110,7 +108,8 @@ module.exports = {
     isDirectory,
     readDir,
     getFile,
-    getMdFiles
+    getMdFiles,
+    getLinks
 }
 
 
