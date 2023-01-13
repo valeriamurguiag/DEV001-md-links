@@ -1,70 +1,10 @@
-const path = require('path');
-const fs = require('fs');
 const md = require('markdown-it');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 const fetch = require('node-fetch');
+const { getMdFiles, getFile } = require('./api')
 
-
-// Check if path exists
-const existsPath = (inputPath) => { 
-    return (fs.existsSync(inputPath)); 
-}
-
-// Check if inputPath is relative or absolute
-const checkPath = (inputPath) => {
-    return (path.isAbsolute(inputPath));
-}
-
-// Turn inputPath into absolute path
-const turnAbsolute = (inputPath) => {
-    return (path.resolve(inputPath));
-}
-
-// Check inputPath extension
-const isFileMarkdown = (inputPath) => {
-    return (path.extname(inputPath) == '.md');
-}
-
-// Check if inputPath is a directory
-const isDirectory = (inputPath) => {
-    return (fs.statSync(inputPath).isDirectory());
-}
-
-// Show directory files
-const readDir = (inputPath) => {
-    return (fs.readdirSync(inputPath));
-}
-
-// Read file
-const getFile = (inputPath) => {
-    return (fs.readFileSync(inputPath,{ encoding: "utf-8"}));
-}
-
-// Getting .md files
-const getMdFiles = (inputPath) => {
-    let mdFilesArr = [];
-    // Check if inputPath is a file 
-    if (isDirectory(inputPath) == false && isFileMarkdown(inputPath)){
-        // Turn path into absolute
-        let absolutePath = turnAbsolute(inputPath);
-        // Add path to the mdFilesArr
-        mdFilesArr.push(absolutePath);
-    } else if (isDirectory(inputPath)){
-        // If so, read directory
-        readDir(inputPath).forEach((file) => {
-            // Join paths for each file
-            let joinedPaths = path.join(inputPath, file);
-            // Turn paths into absolute 
-            let absolutePaths = turnAbsolute(joinedPaths);
-            // Add paths to the mdFilesArr
-            mdFilesArr = [...mdFilesArr, ...getMdFiles(absolutePaths)]
-        });
-    } 
-    return mdFilesArr;
-}
-
-// Getting links from .md files
+// Getting links from .md filess
 const getLinks = (inputPath) => {
     let linksArr = [];
     getMdFiles(inputPath).forEach((file) => {
@@ -101,6 +41,24 @@ const getLinks = (inputPath) => {
     return linksArr;
 }
 
+// const linksArrExample = [
+//     {
+//       href: 'https://es.wikipedia.org/wiki/Markdown',
+//       text: 'Markdown',
+//       file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
+//     },
+//     {
+//       href: 'https://nodejs.org/en/',
+//       text: 'Nodejs',
+//       file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
+//     },
+//     {
+//       href: 'https://postimg.cc/py9FKLgr',
+//       text: 'Imagen final de proyecto',
+//       file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile2.md'
+//     }
+//   ];
+
 // Validating links
 const validateLinks = (linksArr) => {
     // Create array that will contain promises
@@ -132,37 +90,9 @@ const validateLinks = (linksArr) => {
     return Promise.all(promisesArr);
 }
 
-const linksArr = [
-    {
-      href: 'https://es.wikipedia.org/wiki/Markdown',
-      text: 'Markdown',
-      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
-    },
-    {
-      href: 'https://nodejs.org/en/',
-      text: 'Nodejs',
-      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
-    },
-    {
-      href: 'https://postimg.cc/py9FKLgr',
-      text: 'Imagen final de proyecto',
-      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile2.md'
-    }
-  ];
-
-console.log(validateLinks(linksArr))
+// console.log(validateLinks(linksArrExample))
 
 module.exports = {
-    existsPath,
-    checkPath,
-    turnAbsolute,
-    isFileMarkdown,
-    isDirectory,
-    readDir,
-    getFile,
-    getMdFiles,
     getLinks,
     validateLinks
 }
-
-

@@ -1,5 +1,5 @@
 const path = require('path');
-const pathFunctions = require('../api')
+const api = require('../src/api')
 
 // Test for existsPath function
 describe('existsPath', () => {
@@ -8,15 +8,15 @@ describe('existsPath', () => {
   const pathFalse = './thisPath/doesNotExist';
 
   it('should be a function', () => {
-    expect(typeof pathFunctions.existsPath).toBe('function');
+    expect(typeof api.existsPath).toBe('function');
   });
 
   it('should return true if path exists', () => {
-    expect(pathFunctions.existsPath(pathTrue)).toBe(true);
+    expect(api.existsPath(pathTrue)).toBe(true);
   });
 
   it('should return false if path does not exists', () => {
-    expect(pathFunctions.existsPath(pathFalse)).toBe(false);
+    expect(api.existsPath(pathFalse)).toBe(false);
   });
 });
 
@@ -28,15 +28,15 @@ describe('checkPath', () => {
   const pathTrue = './exampleFiles/exampleFile.md';
 
   it('should be a function', () => {
-    expect(typeof pathFunctions.checkPath).toBe('function');
+    expect(typeof api.checkPath).toBe('function');
   });
 
   it('should return true if path is absolute', () => {
-    expect(pathFunctions.checkPath(absolutePath)).toBe(true);
+    expect(api.checkPath(absolutePath)).toBe(true);
   });
 
   it('should return false if path is not absolute', () => {
-    expect(pathFunctions.checkPath(pathTrue)).toBe(false);
+    expect(api.checkPath(pathTrue)).toBe(false);
   });
 });
 
@@ -48,11 +48,11 @@ describe('turnAbsolute', () => {
   const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md';
 
   it('should be a function', () => {
-    expect(typeof pathFunctions.turnAbsolute).toBe('function');
+    expect(typeof api.turnAbsolute).toBe('function');
   });
 
   it('should return an absolute path', () => {
-    expect(pathFunctions.turnAbsolute(pathTrue)).toBe(absolutePath);
+    expect(api.turnAbsolute(pathTrue)).toBe(absolutePath);
   });
 });
 
@@ -64,15 +64,15 @@ describe('isFileMarkdown', () => {
   const absolutePath2 = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\example.js';
 
   it('should be a function', () => {
-    expect(typeof pathFunctions.isFileMarkdown).toBe('function');
+    expect(typeof api.isFileMarkdown).toBe('function');
   });
 
   it('should return true for .md extension file', () => {
-    expect(pathFunctions.isFileMarkdown(absolutePath)).toBe(true);
+    expect(api.isFileMarkdown(absolutePath)).toBe(true);
   });
 
   it('should return false for non .md extension file', () => {
-    expect(pathFunctions.isFileMarkdown(absolutePath2)).toBe(false);
+    expect(api.isFileMarkdown(absolutePath2)).toBe(false);
   });
 });
 
@@ -84,15 +84,15 @@ describe('isDirectory', () => {
   const pathTrue = './exampleFiles/exampleFile.md';
 
   it('should be a function', () => {
-    expect(typeof pathFunctions.isDirectory).toBe('function');
+    expect(typeof api.isDirectory).toBe('function');
   });
 
   it('should return true for directory path', () => {
-    expect(pathFunctions.isDirectory(directoryPath)).toBe(true);
+    expect(api.isDirectory(directoryPath)).toBe(true);
   });
 
   it('should return false for non directory path', () => {
-    expect(pathFunctions.isDirectory(pathTrue)).toBe(false);
+    expect(api.isDirectory(pathTrue)).toBe(false);
   });
 });
 
@@ -104,11 +104,11 @@ describe('readDir', () => {
   const directoryContent =  [ 'example.js', 'exampleFile.md', 'exampleFile2.md', 'exampleFiles2' ];
 
   it('should be a function', () => {
-    expect(typeof pathFunctions.readDir).toBe('function');
+    expect(typeof api.readDir).toBe('function');
   });
 
   it('should return files in the directory', () => {
-    expect(pathFunctions.readDir(directoryPath)).toEqual(directoryContent);
+    expect(api.readDir(directoryPath)).toEqual(directoryContent);
   });
 });
 
@@ -119,11 +119,11 @@ describe('getFile', () => {
   const absolutePathContent = '[Markdown](https://es.wikipedia.org/wiki/Markdown), [Nodejs](https://nodejs.org/en/)' 
 
   it('should be a function', () => {
-    expect(typeof pathFunctions.getFile).toBe('function');
+    expect(typeof api.getFile).toBe('function');
   });
 
   it('should return file content', () => {
-    expect(pathFunctions.getFile(absolutePath)).toBe(absolutePathContent);
+    expect(api.getFile(absolutePath)).toBe(absolutePathContent);
   });
 });
 
@@ -143,46 +143,14 @@ describe('getMdFiles', () => {
   ]
 
   it('should be a function', () => {
-    expect(typeof pathFunctions.getMdFiles).toBe('function');
+    expect(typeof api.getMdFiles).toBe('function');
   });
 
   it('should return an array containing the found md file', () => {
-    expect(pathFunctions.getMdFiles(absolutePath)).toEqual(mdFilesArr2);
+    expect(api.getMdFiles(absolutePath)).toEqual(mdFilesArr2);
   });
 
   it('should return an array containing all found md files', () => {
-    expect(pathFunctions.getMdFiles(directoryPath)).toEqual(mdFilesArr);
-  });
-});
-
-
-// Test for getLinks
-describe('getLinks', () => {
-
-  const directoryPath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles';  
-  const linksArr = [
-    {
-      href: 'https://es.wikipedia.org/wiki/Markdown',
-      text: 'Markdown',
-      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
-    },
-    {
-      href: 'https://nodejs.org/en/',
-      text: 'Nodejs',
-      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
-    },
-    {
-      href: 'https://postimg.cc/py9FKLgr',
-      text: 'Imagen final de proyecto',
-      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile2.md'
-    }
-  ];
-
-  it('should be a function', () => {
-    expect(typeof pathFunctions.getLinks).toBe('function');
-  }); 
-
-  it('should return an array containing objects with links information', () => {
-    expect(pathFunctions.getLinks(directoryPath)).toEqual(linksArr);
+    expect(api.getMdFiles(directoryPath)).toEqual(mdFilesArr);
   });
 });
