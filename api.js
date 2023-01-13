@@ -3,8 +3,7 @@ const fs = require('fs');
 const md = require('markdown-it');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-const fetch = require('node-fetch')
-
+const fetch = require('node-fetch');
 
 
 // Check if path exists
@@ -104,30 +103,54 @@ const getLinks = (inputPath) => {
 
 // Validating links
 const validateLinks = (linksArr) => {
-    return Promise.all(linksArr.map((link) => {
-        return fetch(link.href)
-        .then(result => {
-            // Check if status is within ok status or error status
-            const status = result.status >= 200 && result.status <= 399 ? 'Ok' : 'Fail';
+    // Create array that will contain promises
+    let promisesArr = [];
+    // Loop through each link
+    promisesArr = linksArr.map((link) => fetch(link.href)
+    // Check if their response status was succesful
+    .then((response) => {
+        if (response.ok){
             return {
-                href: link.href,
-                text: link.text,
-                file: link.file,
-                status: result.status,
-                message: statusText,
+                ...link,
+                status: response.status,
+                message: response.statusText,
             }
-        })
-        .catch(() => {
+        } 
             return {
-                href: link.href,
-                text: link.text,
-                file: link.file,
-                status: '',
-                message: 'Fail',
-            }
-        });
-    }));
+                ...link,
+                status: response.status,
+                message: response.statusText,
+            }         
+    })
+    .catch(() => {
+        return {
+            ...link,
+            status: 'FAIL',
+            message: 'NOT FOUND'
+        }
+    })) 
+    return Promise.all(promisesArr);
 }
+
+const linksArr = [
+    {
+      href: 'https://es.wikipedia.org/wiki/Markdown',
+      text: 'Markdown',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
+    },
+    {
+      href: 'https://nodejs.org/en/',
+      text: 'Nodejs',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
+    },
+    {
+      href: 'https://postimg.cc/py9FKLgr',
+      text: 'Imagen final de proyecto',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile2.md'
+    }
+  ];
+
+console.log(validateLinks(linksArr))
 
 module.exports = {
     existsPath,
