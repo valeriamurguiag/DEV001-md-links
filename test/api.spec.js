@@ -1,5 +1,5 @@
 const path = require('path');
-const pathFunctions = require('../functions')
+const pathFunctions = require('../api')
 
 // Test for existsPath function
 describe('existsPath', () => {
