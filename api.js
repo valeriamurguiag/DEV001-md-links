@@ -3,6 +3,8 @@ const fs = require('fs');
 const md = require('markdown-it');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
+const fetch = require('node-fetch')
+
 
 
 // Check if path exists
@@ -100,6 +102,33 @@ const getLinks = (inputPath) => {
     return linksArr;
 }
 
+// Validating links
+const validateLinks = (linksArr) => {
+    return Promise.all(linksArr.map((link) => {
+        return fetch(link.href)
+        .then(result => {
+            // Check if status is within ok status or error status
+            const status = result.status >= 200 && result.status <= 399 ? 'Ok' : 'Fail';
+            return {
+                href: link.href,
+                text: link.text,
+                file: link.file,
+                status: result.status,
+                message: statusText,
+            }
+        })
+        .catch(() => {
+            return {
+                href: link.href,
+                text: link.text,
+                file: link.file,
+                status: '',
+                message: 'Fail',
+            }
+        });
+    }));
+}
+
 module.exports = {
     existsPath,
     checkPath,
@@ -109,7 +138,8 @@ module.exports = {
     readDir,
     getFile,
     getMdFiles,
-    getLinks
+    getLinks,
+    validateLinks
 }
 
 
