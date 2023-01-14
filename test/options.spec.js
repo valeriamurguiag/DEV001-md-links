@@ -1,4 +1,4 @@
-const linksValid = require('../src/linksValid')
+const linksValid = require('../src/options')
 
 // Test for getLinks
 describe('getLinks', () => {
