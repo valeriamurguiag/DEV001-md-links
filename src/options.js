@@ -6,7 +6,7 @@ const { getMdFiles, getFile } = require('./api')
 
 // Getting links from .md filess
 const getLinks = (inputPath) => {
-    let linksArr = [];
+    let promiseLinksArr = [];
     getMdFiles(inputPath).forEach((file) => {
         // The '/' characters define the beginning and the end of the regex.
         // The ^ character state that the expression to match must begin at the start of the input (but is altered by the 'm' modifier, see below).
@@ -29,8 +29,8 @@ const getLinks = (inputPath) => {
                 const links = linksText.href
                 // Return text only from 0th character and move up to 100th
                 const text = linksText.textContent.substring(0, 100);
-                // Push href, text and file to linksArr
-                linksArr.push({
+                // Push href, text and file to promiseLinksArr
+                promiseLinksArr.push({
                     href: links,
                     text: text,
                     file: file,
@@ -38,10 +38,10 @@ const getLinks = (inputPath) => {
             });
         }
     });
-    return linksArr;
+    return promiseLinksArr;
 }
 
-// const linksArrExample = [
+// const promiseLinksArrExample = [
 //     {
 //       href: 'https://es.wikipedia.org/wiki/Markdown',
 //       text: 'Markdown',
@@ -60,11 +60,11 @@ const getLinks = (inputPath) => {
 //   ];
 
 // Validating links
-const validateLinks = (linksArr) => {
+const getStatus = (promiseLinksArr) => {
     // Create array that will contain promises
     let promisesArr = [];
     // Loop through each link
-    promisesArr = linksArr.map((link) => fetch(link.href)
+    promisesArr = promiseLinksArr.map((link) => fetch(link.href)
     // Check if their response status was succesful
     .then((response) => {
         if (response.ok){
@@ -90,9 +90,9 @@ const validateLinks = (linksArr) => {
     return Promise.all(promisesArr);
 }
 
-// console.log(validateLinks(linksArrExample))
+// console.log(validateLinks(promiseLinksArrExample))
 
 module.exports = {
     getLinks,
-    validateLinks
+    getStatus
 }
