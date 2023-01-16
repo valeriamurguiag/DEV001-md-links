@@ -15,7 +15,7 @@ const mdLinks = (path, options = {}) => {
         if(linksArr.length >= 1 && options.validate) {
           resolve((optionsFunc.getStatus(linksArr)))
         } else if (linksArr.length >= 1 && options.validate != true){
-          resolve((optionsFunc.getLinks(linksArr)))
+          resolve((optionsFunc.getLinks(absolutePath)))
         } else {
           reject(new Error ('No links found.'))
         }
