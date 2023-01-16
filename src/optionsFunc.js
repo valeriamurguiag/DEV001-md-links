@@ -55,6 +55,11 @@ const linksArrExample = [
       file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
     },
     {
+      href: 'https://doesnotexist.linksarr2/',
+      text: 'Does not exist',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
+    },
+    {
       href: 'https://postimg.cc/py9FKLgr',
       text: 'Imagen final de proyecto',
       file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile2.md'
@@ -64,10 +69,10 @@ const linksArrExample = [
 // Validating links
 const getStatus = (linksArr) => {
     // Create array that will contain promises
-    let promisesArr = [];
+    let promisesArr = []
     // Loop through each link
     promisesArr = linksArr.map((link) => fetch(link.href)
-   .then((response) => {
+    .then((response) => {
         if (response.ok){
             return {
                 ...link,

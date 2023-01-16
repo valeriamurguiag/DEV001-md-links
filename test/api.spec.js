@@ -116,7 +116,7 @@ describe('readDir', () => {
 describe('getFile', () => {
 
   const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md';
-  const absolutePathContent = '[Markdown](https://es.wikipedia.org/wiki/Markdown), [Nodejs](https://nodejs.org/en/)' 
+  const absolutePathContent = '[Markdown](https://es.wikipedia.org/wiki/Markdown), [Nodejs](https://nodejs.org/en/), [Does not exist](https://doesNotExist.linksArr2)' 
 
   it('should be a function', () => {
     expect(typeof api.getFile).toBe('function');
