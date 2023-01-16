@@ -60,8 +60,6 @@ const getMdFiles = (inputPath) => {
     return mdFilesArr;
 }
 
-console.log(getMdFiles('C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles'))
-
 module.exports = {
     existsPath,
     checkPath,
