@@ -6,7 +6,7 @@ const { getMdFiles, getFile } = require('./api')
 
 // Getting links from .md filess
 const getLinks = (inputPath) => {
-    let promiseLinksArr = [];
+    let linksArr = [];
     getMdFiles(inputPath).forEach((file) => {
         // The '/' characters define the beginning and the end of the regex.
         // The ^ character state that the expression to match must begin at the start of the input (but is altered by the 'm' modifier, see below).
@@ -29,8 +29,8 @@ const getLinks = (inputPath) => {
                 const links = linksText.href
                 // Return text only from 0th character and move up to 100th
                 const text = linksText.textContent.substring(0, 100);
-                // Push href, text and file to promiseLinksArr
-                promiseLinksArr.push({
+                // Push href, text and file to linksArr
+                linksArr.push({
                     href: links,
                     text: text,
                     file: file,
@@ -38,47 +38,43 @@ const getLinks = (inputPath) => {
             });
         }
     });
-    return promiseLinksArr;
+    return linksArr;
 }
 
-// const promiseLinksArrExample = [
-//     {
-//       href: 'https://es.wikipedia.org/wiki/Markdown',
-//       text: 'Markdown',
-//       file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
-//     },
-//     {
-//       href: 'https://nodejs.org/en/',
-//       text: 'Nodejs',
-//       file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
-//     },
-//     {
-//       href: 'https://postimg.cc/py9FKLgr',
-//       text: 'Imagen final de proyecto',
-//       file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile2.md'
-//     }
-//   ];
+// console.log(getLinks('C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles'))
+
+const linksArrExample = [
+    {
+      href: 'https://es.wikipedia.org/wiki/Markdown',
+      text: 'Markdown',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
+    },
+    {
+      href: 'https://nodejs.org/en/',
+      text: 'Nodejs',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
+    },
+    {
+      href: 'https://postimg.cc/py9FKLgr',
+      text: 'Imagen final de proyecto',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile2.md'
+    }
+  ];
 
 // Validating links
-const getStatus = (promiseLinksArr) => {
+const getStatus = (linksArr) => {
     // Create array that will contain promises
     let promisesArr = [];
     // Loop through each link
-    promisesArr = promiseLinksArr.map((link) => fetch(link.href)
-    // Check if their response status was succesful
-    .then((response) => {
+    promisesArr = linksArr.map((link) => fetch(link.href)
+   .then((response) => {
         if (response.ok){
             return {
                 ...link,
                 status: response.status,
                 message: response.statusText,
             }
-        } 
-            return {
-                ...link,
-                status: response.status,
-                message: response.statusText,
-            }         
+        }      
     })
     .catch(() => {
         return {
@@ -90,7 +86,9 @@ const getStatus = (promiseLinksArr) => {
     return Promise.all(promisesArr);
 }
 
-// console.log(validateLinks(promiseLinksArrExample))
+// getStatus(linksArrExample)
+// .then(response => console.log(response))
+// .catch((error) => console.log(error));
 
 module.exports = {
     getLinks,

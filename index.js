@@ -1,5 +1,5 @@
 const api = require('./src/api');
-const options = require('./src/options')
+const optionsFunc = require('./src/optionsFunc')
 
 const mdLinks = (path, options) => {
   return new Promise((resolve, reject) => {
@@ -11,9 +11,9 @@ const mdLinks = (path, options) => {
       const mdFilesArr = api.getMdFiles(absolutePath);
       if(mdFilesArr.length >= 1){
       // Read files and extract links
-      const linksArr = options.getLinks(absolutePath);
+      const linksArr = optionsFunc.getLinks(absolutePath);
         if(linksArr.length >= 1) {
-
+          // -------------------------------------------------------------- 
         }
       } else {
         reject(new Error ('No Markdown files found.'))
