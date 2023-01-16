@@ -28,9 +28,9 @@ const mdLinks = (path, options = {}) => {
   })
 }
 
-mdLinks('C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles')
-.then(response => console.log(response))
-.catch((error) => console.log(error));
+// mdLinks('C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles')
+// .then(response => console.log(response))
+// .catch((error) => console.log(error));
 
 module.exports = () => {
   mdLinks
