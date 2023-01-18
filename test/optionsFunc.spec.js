@@ -61,7 +61,6 @@ describe('getStatus', () => {
   ];
 
 
-
   it('should be a function', () => {
     expect(typeof optionsFunc.getStatus).toBe('function');
   }); 
