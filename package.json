@@ -28,6 +28,9 @@
   ],
   "author": "Valeria Murguia Garcia",
   "license": "ISC",
+  "bin": {
+    "md-links": "./cli.js"
+  },
   "bugs": {
     "url": "https://github.com/valeriamurguiag/DEV001-md-links/issues"
   },
@@ -41,6 +44,7 @@
     "fetch-mock": "^9.11.0",
     "jsdom": "^21.0.0",
     "markdown-it": "^13.0.1",
+    "node-cmd": "^5.0.0",
     "node-fetch": "^2.6.8"
   }
 }
