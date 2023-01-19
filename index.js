@@ -12,6 +12,9 @@ const mdLinks = (path, options = {}) => {
       if(mdFilesArr.length >= 1){
       // Read files and extract links
       const linksArr = optionsFunc.getLinks(absolutePath);
+        // if(linksArr.length >= 1 && options.validate && options.stats){
+        //   resolve((optionsFunc.getStatus(linksArr)))
+        // } else 
         if(linksArr.length >= 1 && options.validate) {
           resolve((optionsFunc.getStatus(linksArr)))
         } else if (linksArr.length >= 1 && options.validate != true){

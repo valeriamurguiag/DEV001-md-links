@@ -24,7 +24,7 @@ describe('existsPath', () => {
 // Test for checkPath function
 describe('checkPath', () => {
 
-  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md';
+  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles\\exampleFile.md';
   const pathTrue = './exampleFiles/exampleFile.md';
 
   it('should be a function', () => {
@@ -45,7 +45,7 @@ describe('checkPath', () => {
 describe('turnAbsolute', () => {
 
   const pathTrue = './exampleFiles/exampleFile.md';
-  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md';
+  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles\\exampleFile.md';
 
   it('should be a function', () => {
     expect(typeof api.turnAbsolute).toBe('function');
@@ -60,8 +60,8 @@ describe('turnAbsolute', () => {
 // Test for isFileMarkdown function
 describe('isFileMarkdown', () => {
 
-  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md';
-  const absolutePath2 = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\example.js';
+  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles\\exampleFile.md';
+  const absolutePath2 = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles\\example.js';
 
   it('should be a function', () => {
     expect(typeof api.isFileMarkdown).toBe('function');
@@ -80,7 +80,7 @@ describe('isFileMarkdown', () => {
 // Test for isDirectory function
 describe('isDirectory', () => {
 
-  const directoryPath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles';
+  const directoryPath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles';
   const pathTrue = './exampleFiles/exampleFile.md';
 
   it('should be a function', () => {
@@ -100,7 +100,7 @@ describe('isDirectory', () => {
 // Test for readDir function
 describe('readDir', () => {
 
-  const directoryPath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles';
+  const directoryPath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles';
   const directoryContent =  [ 'example.js', 'exampleFile.md', 'exampleFile2.md', 'exampleFiles2' ];
 
   it('should be a function', () => {
@@ -115,7 +115,7 @@ describe('readDir', () => {
 // Test for getFile function
 describe('getFile', () => {
 
-  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md';
+  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles\\exampleFile.md';
   const absolutePathContent = '[Markdown](https://es.wikipedia.org/wiki/Markdown), [Nodejs](https://nodejs.org/en/), [Does not exist](https://doesNotExist.linksArr2)' 
 
   it('should be a function', () => {
@@ -131,15 +131,15 @@ describe('getFile', () => {
 // Test for getMdFiles
 describe('getMdFiles', () => {
 
-  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md';
+  const absolutePath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles\\exampleFile.md';
   const mdFilesArr2 = [
-    'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md'
+    'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles\\exampleFile.md'
   ]
-  const directoryPath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles';
+  const directoryPath = 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles';
   const mdFilesArr = [
-    'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md',
-    'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile2.md',
-    'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFiles2\\exampleFile3.md'
+    'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles\\exampleFile.md',
+    'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles\\exampleFile2.md',
+    'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles\\exampleFiles2\\exampleFile3.md'
   ]
 
   it('should be a function', () => {

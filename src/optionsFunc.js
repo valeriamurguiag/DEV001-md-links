@@ -66,6 +66,37 @@ const linksArrExample = [
     }
   ];
 
+const promisesArrExample = [
+    {
+      href: 'https://es.wikipedia.org/wiki/Markdown',
+      text: 'Markdown',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md',
+      status: 200,
+      message: 'OK'
+    },
+    {
+      href: 'https://nodejs.org/en/',
+      text: 'Nodejs',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md',
+      status: 200,
+      message: 'OK'
+    },
+    {
+      href: 'https://doesnotexist.linksarr2/',
+      text: 'Does not exist',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile.md',
+      status: 'FAIL',
+      message: 'NOT FOUND'
+    },
+    {
+      href: 'https://postimg.cc/py9FKLgr',
+      text: 'Imagen final de proyecto',
+      file: 'C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles\\exampleFile2.md',
+      status: 200,
+      message: 'OK'
+    }
+  ]
+
 // Validating links
 const getStatus = (linksArr) => {
     // Create array that will contain promises
@@ -95,7 +126,36 @@ const getStatus = (linksArr) => {
 // .then(response => console.log(response))
 // .catch((error) => console.log(error));
 
+const optStatsValidate = (linksArr) => {
+    // Declare a const that is going to keep broken links account
+    const broken = linksArr.filter((link) => link.status == 'FAIL').length;
+    return {
+        total: linksArr.length,
+        unique: new Set(linksArr.map((link) => link.href)).size,
+        broken: broken
+    }
+}
+
+const optStats = (linksArr) => {
+    return {
+        total: linksArr.length,
+        unique: new Set(linksArr.map((link) => link.href)).size,
+    }
+} 
+
+const optValidate = (promisesArr) => {
+    return promisesArr.map((link) => {
+        return `${link.file} ${link.href} ${link.message} ${link.status} ${link.text}`
+    });
+};
+
+
+// console.log(optValidate(promisesArrExample))
+
 module.exports = {
     getLinks,
-    getStatus
+    getStatus,
+    optStatsValidate,
+    optStats,
+    optValidate
 }
