@@ -150,7 +150,6 @@ const optValidate = (promisesArr) => {
 };
 
 
-// console.log(optValidate(promisesArrExample))
 
 module.exports = {
     getLinks,

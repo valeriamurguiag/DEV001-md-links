@@ -12,29 +12,23 @@ const mdLinks = (path, options = {}) => {
       if(mdFilesArr.length >= 1){
       // Read files and extract links
       const linksArr = optionsFunc.getLinks(absolutePath);
-        // if(linksArr.length >= 1 && options.validate && options.stats){
-        //   resolve((optionsFunc.getStatus(linksArr)))
-        // } else 
         if(linksArr.length >= 1 && options.validate) {
           resolve((optionsFunc.getStatus(linksArr)))
         } else if (linksArr.length >= 1 && options.validate != true){
           resolve((optionsFunc.getLinks(absolutePath)))
-        } else {
+        } else if (linksArr.length == 0){
           reject(new Error ('No links found.'))
         }
-      } else {
-        reject(new Error ('No Markdown files found.'))
-      }
-    } else {
-      reject(new Error ('Invalid path.'));
-    }
+      } 
+    } 
   })
 }
 
-// mdLinks('C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto 4 - MD Links\\DEV001-md-links\\exampleFiles')
+// mdLinks('C:\\Users\\balry\\OneDrive\\Documentos\\Laboratoria\\Proyecto4-MDLinks\\DEV001-md-links\\exampleFiles')
 // .then(response => console.log(response))
 // .catch((error) => console.log(error));
 
-module.exports = () => {
+
+module.exports = {
   mdLinks
 };
