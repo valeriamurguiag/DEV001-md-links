@@ -1,59 +1,51 @@
 
 const fs = require('fs');
-const { resolve } = require('path');
 const path = require('path');
+const esRuta = (route) => fs.existsSync(route)
 // ver si es archivo
-const isFile = (route)=>fs.statSync(route).isFile()
+const isFile = (route) => fs.statSync(route).isFile()
 // ver si la ruta es absoluta
 const isAbsolute = (route) => path.isAbsolute(route)
 // si no es abosoluta ,convertir en ruta absoluta.
-const resolverRuta = (route)=>path.resolve(route)
+const resolverRuta = (route) => path.resolve(route)
+// funcion que lea archivos
+const readingFiles = (route) => new Promise((resolve, reject) => {
+  fs.readFile(route, 'utf8', function (error, data) {
+    if (error) {
+      reject('error')
+    } else {
+      resolve(data)
+    }
+  })
+});
 const route = './holo.txt';
-/* const  mdLinks = (path, options) => {
+
+const mdLinks = (path, options) => {
   return new Promise((resolve, reject) => {
     // identificar si la ruta existe
-    /* if (fs.existsSync(path)) {
-      resolve('esta ruta existe');
-
-    } else {
-      // si no existe la ruta rechazar la promesa
-      reject('la ruta no existe')
-    }
-
-  }); */
-
-  
-  //ver si el archivo es md
-  // crear una funcion para  leer el archivo
-  // Ver si el archivo tiene links
-  // si es un archivo md,
-  // ver si los links son validos o no
-
-
-/*  if (isFile(route)){
-  console.log('esto es un archivo')
+    if (esRuta(path)) {
+      const absolutePath = isAbsolute(path) ? route : resolverRuta(route); // si es absoluta convertirla
+      if (isFile(absolutePath)) {
+        console.log('esto es un archivo')
+      }
+      else {
+        reject('Esto no es un archivo')
+      }
+      readingFiles('./holo.txt')
+        .then(res => console.log(res))
+    });
+  }
+  } else {
+  // si no existe la ruta rechazar la promesa
+  reject('la ruta no existe')
 }
-else{
-  console.log('Esto no es un archivo')
-} */
-
- if (isAbsolute(route)){
-  console.log('esta ruta es abolsuta')
-
-} else {
-  resolverRuta()
-}
- 
-/* module.exports = {
-  mdLinks
-
-}; */
-//console.log(resolverRuta('./archivosDePruebas'));
 
 
 
+console.log(mdLinks('./holo.txt'));
 
-
-
-
-
+ /*  module.exports = {
+  mdLinks,
+  isFile,
+  isAbsolute
+};    */ 
