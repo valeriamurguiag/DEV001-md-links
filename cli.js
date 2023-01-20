@@ -5,17 +5,13 @@ const mdLinks = require('./index');
 const chalk = require('chalk');
 const { optStatsValidate, optStats, optValidate } = require('./src/optionsFunc');
 
-// const [,, ...args] = process.argv;
-
-// const message = chalk.blue;
-// const greeting = () => {
-//     console.log(message('----------' + `Welcome to MD Links ${args}` + message('----------')))
-// }
-
-// greeting()
-
 const path = process.argv[2]
 const argv = process.argv
+const red = chalk.red;
+const green = chalk.green;
+const blue = chalk.blue;
+const welcome = chalk.bgBlue;
+const yellow = chalk.yellow;
 
 const cli = (path, argv) => {
     // Grab provided arguments
@@ -24,12 +20,16 @@ const cli = (path, argv) => {
     const stats = argv.includes("--stats");
 
     if(path == undefined){
-        console.log('Invalid path. Please try another one')
+        console.log(welcome('\n---------------------Welcome to MD-links---------------------' ))
+        console.log('\nInstructions:')
+        console.log(blue('1. Submit a valid path right after "md-links".'))
+        console.log(blue('2. To see links route, url, status message, status number and text, write "--validate" right after your path.'))
+        console.log(blue('3. To see total links number and unique links number, write "--stats" right after your path.'))
+        console.log(blue('4. To additionally see broken links number, add "--stats --validate" right after your path.'))
     } 
-
-    if (argv === undefined && argv !== validate && argv !== stats) {
-        console.log('Invalid option. Please try to use --validate, --stats or --stats --validate')
-    }
+    // else if (argv !== validate && argv !== stats) {
+    //     console.log(red('Please try submitting a valid option such as "--validate", "--stats" or "--stats --validate" after your path.'))
+    // }
 
     if(stats && validate){
         mdLinks.mdLinks(path, { validate: true })
@@ -58,9 +58,9 @@ const cli = (path, argv) => {
     if (validate) {
         mdLinks.mdLinks(path, { validate: true })
             .then((results) => {
-                const onlyValidate = optValidate(results)
-                console.log(`${onlyValidate.file} ${onlyValidate.href} ${onlyValidate.message} ${onlyValidate.status} ${onlyValidate.text}`)
-                
+                results.forEach(elem => {
+                    console.log(blue(`${elem.file} `) + `${ elem.href} ` + blue(`${elem.message} `)  + `${elem.status} ` + `${elem.text}`) 
+                })
             })
             .catch((error) => { 
                 console.log(error) 
