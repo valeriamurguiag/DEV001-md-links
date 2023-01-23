@@ -1,7 +1,6 @@
-
 const fs = require('fs');
-const path = require('path');
-const esRuta = (route) => fs.existsSync(route)
+const path = require('path'); 
+ const esRuta = (route) => fs.existsSync(route)
 // ver si es archivo
 const isFile = (route) => fs.statSync(route).isFile()
 // ver si la ruta es absoluta
@@ -17,8 +16,9 @@ const readingFiles = (route) => new Promise((resolve, reject) => {
       resolve(data)
     }
   })
-});
-const route = './holo.txt';
+}); 
+const isMdfile = (route)=> path.extname(route)===('md')
+const route = './prueba.md';
 
 const mdLinks = (path, options) => {
   return new Promise((resolve, reject) => {
@@ -31,25 +31,21 @@ const mdLinks = (path, options) => {
       else {
         reject('Esto no es un archivo')
       }
-      readingFiles('./holo.txt')
+      readingFiles(route)
         .then(res => console.log(res)) 
     }
   });
-   /*  else {
+  /*   else {
      // si no existe la ruta rechazar la promesa
      reject('la ruta no existe')
    } 
- */
+  */
 }
-
-
-
-console.log(mdLinks('./holo.txt'));
-
-module.exports = {
+ module.exports = {
   mdLinks,
   isFile,
   isAbsolute,
   resolverRuta,
   readingFiles
-};   
+};  
+//console.log(isMdfile(route));

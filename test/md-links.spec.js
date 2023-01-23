@@ -6,7 +6,8 @@ const { mdLinks,
         resolverRuta,
         readingFiles
          } = require('../index.js');
-
+const fs = require ('fs');
+jest.mock('fs');
 
 
 
@@ -26,10 +27,10 @@ describe('Saber si es un archivo')
 it('isFile debería ser una función', () => {
   expect(typeof isFile).toBe('function');
 });
-/*  it('isFile debería dar true si es un archivo', () => {
-  expect(isFile('C:\Users\chica\OneDrive\Documentos\Md-links\DEV001-md-links')).toBe(true);
-});  */
-
+ /* it('isFile debería dar true si es un archivo', () => {
+  expect(isFile("C:\\Users\\chica\\OneDrive\\Documentos\\Md-links\\DEV001-md-links\\.holo.txt")).toBe(true);
+});
+ */
 describe('Saber si es absoluta' )
   it ('isAbsolute es una funcion', ()=>{
     expect( typeof isAbsolute).toBe('function');
@@ -39,7 +40,7 @@ describe('Deberia convertir a absoluta')
   expect(typeof resolverRuta ).toBe('function');
 }) 
  it('debería convertir a ruta absoluta', () => {
-  expect(resolverRuta('.\holo.txt')).toBe('C:UserschicaOneDriveDocumentosMd-linksDEV001-md-linksholo.txt');
+  expect(resolverRuta('.\holo.txt')).toBe("C:\\Users\\chica\\OneDrive\\Documentos\\Md-links\\DEV001-md-links\\.holo.txt");
 }); 
 describe('Saber si lee archivos')
 it('readingFiles es una funcion', ()=>{
