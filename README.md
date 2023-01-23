@@ -79,6 +79,20 @@ Unique: 3
 Broken: 1
 ```
 
+##### `md-links`
+
+If we just pass `md-links` without any path or option, the module should show a greeting message, along with the instructions for displaying the statistics explained above.
+
+```sh
+---------------------Welcome to MD-links---------------------
+
+Instructions:
+1. Submit a valid path right after "md-links".
+2. To see links route, url, status message, status number and text, write "--validate" right after your path.
+3. To see total links number and unique links number, write "--stats" right after your path.
+4. To additionally see broken links number, add "--stats --validate" right after your path.
+```
+
 
 ### 3) Using package in API (Application Programming Interface)
 
