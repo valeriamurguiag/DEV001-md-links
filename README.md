@@ -17,6 +17,7 @@ they handle plain text (GitHub, forums, blogs, ...) and it is very common to fin
 
 Within an open source community, I have been proposed to create a tool using [Node.js](https://nodejs.org/), that reads and analyzes files in `Markdown` format, to verify the links they contain and report some statistics.
 
+[![Diagrama-de-Flujo-md-links.png](https://i.postimg.cc/BvJ0r402/Diagrama-de-Flujo-md-links.png)](https://postimg.cc/gxtQR9r0)
 
 ## 2. Developing Process
 
