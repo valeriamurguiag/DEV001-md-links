@@ -24,7 +24,7 @@ const mdLinks = (path, options) => {
   return new Promise((resolve, reject) => {
     // identificar si la ruta existe
     if (esRuta(path)) {
-      const absolutePath = isAbsolute(path) ? route : resolverRuta(route); // si es absoluta convertirla
+      const absolutePath = isAbsolute(path) ? route : resolverRuta(route); // si es relativa convertirla
       if (isFile(absolutePath)) {
         console.log('esto es un archivo')
       }
@@ -32,20 +32,24 @@ const mdLinks = (path, options) => {
         reject('Esto no es un archivo')
       }
       readingFiles('./holo.txt')
-        .then(res => console.log(res))
-    });
-  }
-  } else {
-  // si no existe la ruta rechazar la promesa
-  reject('la ruta no existe')
+        .then(res => console.log(res)) 
+    }
+  });
+   /*  else {
+     // si no existe la ruta rechazar la promesa
+     reject('la ruta no existe')
+   } 
+ */
 }
 
 
 
 console.log(mdLinks('./holo.txt'));
 
- /*  module.exports = {
+module.exports = {
   mdLinks,
   isFile,
-  isAbsolute
-};    */ 
+  isAbsolute,
+  resolverRuta,
+  readingFiles
+};   
