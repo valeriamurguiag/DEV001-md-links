@@ -82,7 +82,7 @@ Broken: 1
 
 ### 2) Using package in API (Application Programming Interface)
 
-For using this package as an API, you have to use require (CommonJS) for the mdLinks(path, options) module after installing it. This module has two arguments:
+For using this package as an API, you have to use require (CommonJS) for the mdLinks(path, options) module after installing it.
 
 Note that this API is a pending promise, so you have to use .then and .catch after the module to resolve it.
 
@@ -91,6 +91,6 @@ Note that this API is a pending promise, so you have to use .then and .catch aft
 
 - Node.js: used to develop library.
 - NPM: used for managing dependencies
-- chalk: used for styles and colors.
-- fetch: used for HTTP requests.
-- jest: used for unit tests.
+- Chalk: used for styles and colors.
+- Fetch: used for HTTP requests.
+- Jest: used for unit tests.
