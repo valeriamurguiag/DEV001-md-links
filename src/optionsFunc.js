@@ -149,6 +149,12 @@ const optValidate = (promisesArr) => {
     });
 };
 
+const noOption = (linksArr) => {
+  return linksArr.map((links) => {
+    return links.map((link) => `${link.file} ${link.href} ${link.text}`);
+  });
+};
+
 
 
 module.exports = {
@@ -156,5 +162,6 @@ module.exports = {
     getStatus,
     optStatsValidate,
     optStats,
-    optValidate
+    optValidate,
+    noOption
 }

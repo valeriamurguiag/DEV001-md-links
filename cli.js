@@ -3,7 +3,7 @@
 
 const mdLinks = require('./index');
 const chalk = require('chalk');
-const { optStatsValidate, optStats, optValidate } = require('./src/optionsFunc');
+const { optStatsValidate, optStats, optValidate, noOption } = require('./src/optionsFunc');
 
 const path = process.argv[2]
 const argv = process.argv
@@ -27,9 +27,6 @@ const cli = (path, argv) => {
         console.log(blue('3. To see total links number and unique links number, write "--stats" right after your path.'))
         console.log(blue('4. To additionally see broken links number, add "--stats --validate" right after your path.'))
     } 
-    // else if (argv !== validate && argv !== stats) {
-    //     console.log(red('Please try submitting a valid option such as "--validate", "--stats" or "--stats --validate" after your path.'))
-    // }
 
     if(stats && validate){
         mdLinks.mdLinks(path, { validate: true })
@@ -61,6 +58,17 @@ const cli = (path, argv) => {
                 results.forEach(elem => {
                     console.log(blue(`${elem.file} `) + `${ elem.href} ` + blue(`${elem.message} `)  + `${elem.status} ` + `${elem.text}`) 
                 })
+            })
+            .catch((error) => { 
+                console.log(error) 
+            })
+            return
+    } else {
+        mdLinks.mdLinks(path, { validate: false })
+            .then((results) => {
+                results.forEach(elem => {
+                    console.log(blue(`${elem.file} `) + `${elem.href} ` + blue(`${elem.text.slice(0, 50)}`))
+                });
             })
             .catch((error) => { 
                 console.log(error) 
