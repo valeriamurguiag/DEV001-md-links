@@ -31,7 +31,7 @@ In this project I created a command line tool (CLI) as well as my own library in
 ### 1) Installing package
 
 ```sh
-npm install githubname/reponame
+npm install valeriamurguiag/DEV001-md-links
 ```
 
 
