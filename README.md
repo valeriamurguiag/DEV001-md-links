@@ -17,7 +17,7 @@ they handle plain text (GitHub, forums, blogs, ...) and it is very common to fin
 
 Within an open source community, I have been proposed to create a tool using [Node.js](https://nodejs.org/), that reads and analyzes files in `Markdown` format, to verify the links they contain and report some statistics.
 
-[![Diagrama-de-Flujo-md-links.png](https://i.postimg.cc/BvJ0r402/Diagrama-de-Flujo-md-links.png)](https://postimg.cc/gxtQR9r0)
+[![Diagrama-de-Flujo-md-links-4.png](https://i.postimg.cc/J7jGC4w2/Diagrama-de-Flujo-md-links-4.png)](https://postimg.cc/BtQqx3nT)
 
 ## 2. Developing Process
 
@@ -25,9 +25,7 @@ In this project I created a command line tool (CLI) as well as my own library in
 
 [Node.js](https://nodejs.org/en/) is a runtime environment for JavaScript built with the [Chrome V8 JavaScript Engine](https://developers.google.com/v8/). This will allow us to execute JavaScript in the environment of the operating system, be it your machine or a server, which opens the doors for us to be able to interact with the system itself, files, networks...
 
-Flowchart: 
-
-[![flowchart-md-links.png](https://i.postimg.cc/L5z4mrKK/flowchart-md-links.png)](https://postimg.cc/dZVcBNV4)
+[![Diagrama-de-Flujo-md-links-3.png](https://i.postimg.cc/t44T63sK/Diagrama-de-Flujo-md-links-3.png)](https://postimg.cc/8jxNQrB4)
 
 ## 3. Usage Instructions
 
