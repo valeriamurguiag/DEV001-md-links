@@ -3,7 +3,7 @@
 
 const mdLinks = require('./index');
 const chalk = require('chalk');
-const { optStatsValidate, optStats, optValidate, noOption } = require('./src/optionsFunc');
+const { optStatsValidate, optStats, optValidate } = require('./src/optionsFunc');
 
 const path = process.argv[2]
 const argv = process.argv
