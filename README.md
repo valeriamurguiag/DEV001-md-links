@@ -34,6 +34,7 @@ In this project I created a command line tool (CLI) as well as my own library in
 npm install githubname/reponame
 ```
 
+
 ### 2) Using package in CLI (Command Line Interface)
 
 Our application executable should be able to run as follows through the **terminal**:
@@ -78,7 +79,8 @@ Unique: 3
 Broken: 1
 ```
 
-### 2) Using package in API (Application Programming Interface)
+
+### 3) Using package in API (Application Programming Interface)
 
 For using this package as an API, you have to use require (CommonJS) for the mdLinks(path, options) module after installing it.
 
