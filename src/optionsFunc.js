@@ -156,5 +156,5 @@ module.exports = {
     getStatus,
     optStatsValidate,
     optStats,
-    optValidate
+    optValidate,
 }
