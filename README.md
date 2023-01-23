@@ -2,14 +2,14 @@
 
 ## Content
 
-* [1. Markdown](#1-markdown)
+* [1. Introduction](#1-introduction)
 * [2. Developing Process](#2-developing-process)
 * [3. Usage Instructions](#3-usage-instructions)
 * [4. Dependencies](#4-dependencies)
 
 ***
 
-## 1. Markdown
+## 1. Introduction
 
 [Markdown](https://es.wikipedia.org/wiki/Markdown) is a markup language very popular among developers. It is used in many platforms that
 they handle plain text (GitHub, forums, blogs, ...) and it is very common to find multiple files in that format in any kind of repository
