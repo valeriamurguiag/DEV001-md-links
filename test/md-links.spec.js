@@ -1,49 +1,76 @@
 const { default: expect } = require('expect');
 const { describe } = require('yargs');
 const { mdLinks,
-        isFile,
-        isAbsolute,
-        resolverRuta,
-        readingFiles
-         } = require('../index.js');
-const fs = require ('fs');
+  isFile,
+  isAbsolute,
+  resolverRuta,
+  readingFiles,
+  isMdFile
+} = require('../index.js');
+ const fs = require('fs');
 jest.mock('fs');
-
+ 
 
 
  /* describe('mdLinks', () => {
 
-  it('Deberia devolver una promesa', () => {
-    expect(mdLinks()).toBe(typeof Promise);
-  });  */
+ it('Deberia devolver una promesa', () => {
+   expect(mdLinks()).toBe(typeof Promise);
+ });   */
 it('Deberia rechazar cuando el path no existe', () => {
   mdLinks('/mayito/documento/noexiste.md').catch((error) => {
     expect(error).toBe('la ruta no existe')
   })
 });
+
+
 //});   
 
+//funcion isFile
 describe('Saber si es un archivo')
 it('isFile debería ser una función', () => {
   expect(typeof isFile).toBe('function');
 });
- /* it('isFile debería dar true si es un archivo', () => {
-  expect(isFile("C:\\Users\\chica\\OneDrive\\Documentos\\Md-links\\DEV001-md-links\\.holo.txt")).toBe(true);
+it('isFile debería dar true si  es un archivo', () => {
+  expect(isFile('./holo.txt')).toBe(true);
 });
- */
-describe('Saber si es absoluta' )
-  it ('isAbsolute es una funcion', ()=>{
-    expect( typeof isAbsolute).toBe('function');
+it('isFile deberia dar false si no es un archivo', () => {
+  expect(isFile('./archivosDePruebas')).toBe(false)
 })
+
+// funcion isAbsolute
+describe('Saber si es absoluta')
+it('isAbsolute es una funcion', () => {
+  expect(typeof isAbsolute).toBe('function');
+})
+it('si no es absoluta, que devuelva false', () => {
+  expect(isAbsolute('./holo.txt')).toBe(false);
+})
+it('si la ruta es absoluta, devolver true', () => {
+  expect(isAbsolute("C:\\Users\\chica\\OneDrive\\Documentos\\Md-links\\DEV001-md-links\\.holo.txt")).toBe(true);
+})
+
 describe('Deberia convertir a absoluta')
-/it ('resolverRuta es una funcion', ()=>{
-  expect(typeof resolverRuta ).toBe('function');
-}) 
- it('debería convertir a ruta absoluta', () => {
+  / it('resolverRuta es una funcion', () => {
+    expect(typeof resolverRuta).toBe('function');
+  })
+
+it('debería convertir a ruta absoluta', () => {
   expect(resolverRuta('.\holo.txt')).toBe("C:\\Users\\chica\\OneDrive\\Documentos\\Md-links\\DEV001-md-links\\.holo.txt");
-}); 
+});
+
+//funcion readFile
 describe('Saber si lee archivos')
-it('readingFiles es una funcion', ()=>{
+it('readingFiles es una funcion', () => {
   expect(typeof readingFiles).toBe('function');
 })
+
+//funcion isMdFile
+describe('testeo si el archivo es md')
+it('isMdFile es una funcion', () => {
+  expect(typeof isMdFile).toBe('function')
+})
+it('isMdFile debe identificar si la extension es md',()=>{
+  expect(isMdFile('C:\\Users\\chica\\OneDrive\\Documentos\\Md-links\\DEV001-md-links\\.prueba.md')).toBe(true);
+}) 
 
