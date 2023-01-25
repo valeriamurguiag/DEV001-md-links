@@ -32,7 +32,7 @@ const cli = (path, argv) => {
         mdLinks.mdLinks(path, { validate: true })
         .then((results) => {
             const statsValidate = optStatsValidate(results)
-            console.log(`Total: ${statsValidate.total} \nUnique: ${statsValidate.unique} \nBroken: ${statsValidate.broken}`)
+            console.log(blue(`Total: ${statsValidate.total} \nUnique: ${statsValidate.unique} \nBroken: ${statsValidate.broken}`))
         })
         .catch((error) => {
             console.log(error)
@@ -44,7 +44,7 @@ const cli = (path, argv) => {
         mdLinks.mdLinks(path, { validate: false })
             .then((results) => {
                 const onlyStats = optStats(results)
-                console.log(`Total: ${onlyStats.total}\nUnique: ${onlyStats.unique}`)
+                console.log(blue(`Total: ${onlyStats.total}\nUnique: ${onlyStats.unique}`))
             })
             .catch((error) => { 
                 console.log(error) 
@@ -56,7 +56,7 @@ const cli = (path, argv) => {
         mdLinks.mdLinks(path, { validate: true })
             .then((results) => {
                 results.forEach(elem => {
-                    console.log(blue(`${elem.file} `) + `${ elem.href} ` + blue(`${elem.message} `)  + `${elem.status} ` + `${elem.text}`) 
+                    console.log(blue(`\nFile: ${elem.file} `) + `\nHref: ${ elem.href} ` + `\nMessage: ${elem.message} `  + `\nStatus: ${elem.status} ` + `\nText: ${elem.text}`) 
                 })
             })
             .catch((error) => { 
@@ -67,7 +67,7 @@ const cli = (path, argv) => {
         mdLinks.mdLinks(path, { validate: false })
             .then((results) => {
                 results.forEach(elem => {
-                    console.log(blue(`${elem.file} `) + `${elem.href} ` + blue(`${elem.text.slice(0, 50)}`))
+                    console.log(blue(`\nFile: ${elem.file} `) + `\nHref: ${elem.href} ` + `\nText: ${elem.text.slice(0, 50)}`)
                 });
             })
             .catch((error) => { 
