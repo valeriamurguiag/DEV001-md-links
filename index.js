@@ -45,13 +45,13 @@ const mdLinks = (path, options) => {
 
   });
 
-  /*   else {
+  
      // si no existe la ruta rechazar la promesa
-     reject('la ruta no existe')
-   } 
-  */
+/*      else {reject('la ruta no existe')
 }
-//console.log(mdLinks(route));
+ */
+}
+console.log(mdLinks(route));
 module.exports = {
   mdLinks,
   isFile,

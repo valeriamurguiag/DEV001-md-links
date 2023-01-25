@@ -7,9 +7,7 @@ const { mdLinks,
   readingFiles,
   isMdFile
 } = require('../index.js');
- const fs = require('fs');
-jest.mock('fs');
- 
+
 
 
  /* describe('mdLinks', () => {
