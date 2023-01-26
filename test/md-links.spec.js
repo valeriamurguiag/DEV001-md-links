@@ -1,4 +1,5 @@
 const { default: expect } = require('expect');
+
 const { describe } = require('yargs');
 const { mdLinks,
   isFile,
@@ -54,7 +55,7 @@ describe('Deberia convertir a absoluta')
   })
 
 it('debería convertir a ruta absoluta', () => {
-  expect(resolverRuta('.\holo.txt')).toBe("C:\\Users\\chica\\OneDrive\\Documentos\\Md-links\\DEV001-md-links\\.holo.txt");
+  expect(resolverRuta('./holo.txt')).toBe("C:\\Users\\chica\\OneDrive\\Documentos\\Md-links\\DEV001-md-links\\.holo.txt");
 });
 
 //funcion readFile
@@ -71,4 +72,8 @@ it('isMdFile es una funcion', () => {
 it('isMdFile debe identificar si la extension es md',()=>{
   expect(isMdFile('C:\\Users\\chica\\OneDrive\\Documentos\\Md-links\\DEV001-md-links\\.prueba.md')).toBe(true);
 }) 
+it('Deberia rechazar si la extension no es md' , ()=>{
+  expect(isMdFile('C:\\Users\\chica\\OneDrive\\Documentos\\Md-links\\DEV001-md-links\\.prueba.md')).toBe(true);
+}) 
+
 

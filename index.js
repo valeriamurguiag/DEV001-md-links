@@ -20,6 +20,7 @@ const readingFiles = (route) => new Promise((resolve, reject) => {
 const isMdFile = (route) => path.extname(route) === '.md'
 const route = './prueba.md';
 
+// eslint-disable-next-line no-unused-vars
 const mdLinks = (path, options) => {
   return new Promise((resolve, reject) => {
     // identificar si la ruta existe
@@ -31,16 +32,16 @@ const mdLinks = (path, options) => {
       else {
         reject('Esto no es un archivo')
       }
-
+      if (isMdFile(route)) {
+        console.log('este archivo es .md')
+      } else {
+        reject('esto no es un archivo .md')
+      } 
       readingFiles(route)
         .then(res => console.log(res))
         .catch(error => { reject(error) })
 
-       if (isMdFile(route)) {
-        console.log('este archivo es .md')
-      } else {
-        console.log('esto no es un archivo .md')
-      } 
+   
     }
 
   });
